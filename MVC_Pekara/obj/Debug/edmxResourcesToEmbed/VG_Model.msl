@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VG_DatabaseModelStoreContainer" CdmEntityContainer="VG_DatabaseEntities">
+    <EntitySetMapping Name="Artiklis">
+      <EntityTypeMapping TypeName="VG_DatabaseModel.Artikli">
+        <MappingFragment StoreEntitySet="Artikli">
+          <ScalarProperty Name="ArtikalID" ColumnName="ArtikalID" />
+          <ScalarProperty Name="KategorijaID" ColumnName="KategorijaID" />
+          <ScalarProperty Name="NazivArtikla" ColumnName="NazivArtikla" />
+          <ScalarProperty Name="Masa" ColumnName="Masa" />
+          <ScalarProperty Name="TipBrasna" ColumnName="TipBrasna" />
+          <ScalarProperty Name="ProizvodjackaCenaBezPDV" ColumnName="ProizvodjackaCenaBezPDV" />
+          <ScalarProperty Name="ProizvodjackaCenaSaPDV" ColumnName="ProizvodjackaCenaSaPDV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kategorijes">
+      <EntityTypeMapping TypeName="VG_DatabaseModel.Kategorije">
+        <MappingFragment StoreEntitySet="Kategorije">
+          <ScalarProperty Name="KategorijaID" ColumnName="KategorijaID" />
+          <ScalarProperty Name="NazivKategorije" ColumnName="NazivKategorije" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NalogProizvodnjes">
+      <EntityTypeMapping TypeName="VG_DatabaseModel.NalogProizvodnje">
+        <MappingFragment StoreEntitySet="NalogProizvodnje">
+          <ScalarProperty Name="NalogID" ColumnName="NalogID" />
+          <ScalarProperty Name="BrojNaloga" ColumnName="BrojNaloga" />
+          <ScalarProperty Name="DatumNaloga" ColumnName="DatumNaloga" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StavkeNalogaProizvodnjes">
+      <EntityTypeMapping TypeName="VG_DatabaseModel.StavkeNalogaProizvodnje">
+        <MappingFragment StoreEntitySet="StavkeNalogaProizvodnje">
+          <ScalarProperty Name="StavkeNPID" ColumnName="StavkeNPID" />
+          <ScalarProperty Name="NalogID" ColumnName="NalogID" />
+          <ScalarProperty Name="ArtikalID" ColumnName="ArtikalID" />
+          <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

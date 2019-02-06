@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VG_DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Artikli">
+    <Key>
+      <PropertyRef Name="ArtikalID" />
+    </Key>
+    <Property Name="ArtikalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KategorijaID" Type="Int32" Nullable="false" />
+    <Property Name="NazivArtikla" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Masa" Type="Int32" />
+    <Property Name="TipBrasna" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProizvodjackaCenaBezPDV" Type="Int32" />
+    <Property Name="ProizvodjackaCenaSaPDV" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Kategorije">
+    <Key>
+      <PropertyRef Name="KategorijaID" />
+    </Key>
+    <Property Name="KategorijaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NazivKategorije" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NalogProizvodnje">
+    <Key>
+      <PropertyRef Name="NalogID" />
+    </Key>
+    <Property Name="NalogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BrojNaloga" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DatumNaloga" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="StavkeNalogaProizvodnjes" Relationship="Self.FK_StavkeNalogaProizvodnje_NalogProizvodnje" FromRole="NalogProizvodnje" ToRole="StavkeNalogaProizvodnje" />
+  </EntityType>
+  <EntityType Name="StavkeNalogaProizvodnje">
+    <Key>
+      <PropertyRef Name="StavkeNPID" />
+    </Key>
+    <Property Name="StavkeNPID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NalogID" Type="Int32" Nullable="false" />
+    <Property Name="ArtikalID" Type="Int32" Nullable="false" />
+    <Property Name="Kolicina" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="NalogProizvodnje" Relationship="Self.FK_StavkeNalogaProizvodnje_NalogProizvodnje" FromRole="StavkeNalogaProizvodnje" ToRole="NalogProizvodnje" />
+  </EntityType>
+  <Association Name="FK_StavkeNalogaProizvodnje_NalogProizvodnje">
+    <End Role="NalogProizvodnje" Type="Self.NalogProizvodnje" Multiplicity="1" />
+    <End Role="StavkeNalogaProizvodnje" Type="Self.StavkeNalogaProizvodnje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NalogProizvodnje">
+        <PropertyRef Name="NalogID" />
+      </Principal>
+      <Dependent Role="StavkeNalogaProizvodnje">
+        <PropertyRef Name="NalogID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VG_DatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Artiklis" EntityType="Self.Artikli" />
+    <EntitySet Name="Kategorijes" EntityType="Self.Kategorije" />
+    <EntitySet Name="NalogProizvodnjes" EntityType="Self.NalogProizvodnje" />
+    <EntitySet Name="StavkeNalogaProizvodnjes" EntityType="Self.StavkeNalogaProizvodnje" />
+    <AssociationSet Name="FK_StavkeNalogaProizvodnje_NalogProizvodnje" Association="Self.FK_StavkeNalogaProizvodnje_NalogProizvodnje">
+      <End Role="NalogProizvodnje" EntitySet="NalogProizvodnjes" />
+      <End Role="StavkeNalogaProizvodnje" EntitySet="StavkeNalogaProizvodnjes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

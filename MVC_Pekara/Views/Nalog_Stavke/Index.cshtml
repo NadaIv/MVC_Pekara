@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Master details entry form</h2>
+<div class="container">
+    <div class="master">
+        <h2>Order</h2>
+        <table class="table table-responsive">
+            <tr>
+                <td>Broj naloga</td>
+                <td>
+                    <input type="text" id="brojNaloga" class="form-control" />
+                    <span class="error">Order no required</span>
+                </td>
+                <td>Datum naloga</td>
+                <td>
+                    <input type="text" id="datumNaloga" class="form-control" />
+                    <span class="error">Valid order date required (ex: dd-MM-yyyy)</span>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+    <div class="details">
+        <h2>
+            Order items
+        </h2>
+        <table class="table table-responsive">
+            <tr>
+                <td>Kategorija</td>
+                <td>Artikal</td>
+                <td>Kolicina</td>
+
+                <td>&nbsp;</td>
+            </tr>
+            <tr class="mycontainer" id="mainrow">
+                <td>
+                    <select id="artikalKategorija" class="ak form-control" onchange="LoadArtikal(this)">
+                        <option>Select</option>
+                    </select>
+                    <span class="error">Select Kategorija</span>
+                </td>
+                <td>
+                    <select id="artikal" class="artikal form-control">
+                        <option>Select</option>
+                    </select>
+                    <span class="error">Select artikal</span>
+                </td>
+                <td>
+                    <input type="text" id="kolicina" class="kolicina form-control" />
+                    <span class="error">Kolicina</span>
+                </td>
+
+                <td>
+                    <input type="button" id="add" value="add" style="width:80px" class="btn btn-success" />
+                </td>
+            </tr>
+        </table>
+        <div id="orderItems">
+            <table class="table table-responsive" id="orderdetailsItems"></table>
+            <span id="orderItemError" style="color:red"></span>
+        </div>
+        <div style="padding:10px 0; text-align:right">
+            <input id="submit" type="button" value="Save Order" class="btn btn-warning" style="padding:10px 20px" />
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+<script src="~/Scripts/myScripts.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#datumNaloga').datepicker({
+            dateFormat: 'mm-dd-yy'
+        })
+    })
+</script>
+<style>
+    span.error {
+        display: block;
+        visibility: hidden;
+        color: red;
+        font-size: 90%;
+    }
+
+    tr.error {
+        background-color: rgba(255,0,0,0.35);
+    }
+</style>
