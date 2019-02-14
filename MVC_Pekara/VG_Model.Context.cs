@@ -12,6 +12,8 @@ namespace MVC_Pekara
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class VG_DatabaseEntities : DbContext
     {
@@ -29,5 +31,19 @@ namespace MVC_Pekara
         public virtual DbSet<Kategorije> Kategorijes { get; set; }
         public virtual DbSet<NalogProizvodnje> NalogProizvodnjes { get; set; }
         public virtual DbSet<StavkeNalogaProizvodnje> StavkeNalogaProizvodnjes { get; set; }
+    
+        public virtual ObjectResult<GetNalogStavke_Result> GetNalogStavke()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetNalogStavke_Result>("GetNalogStavke");
+        }
+    
+        
+    
+        
+    
+        public virtual ObjectResult<GetNalSt_Result> GetNalSt()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetNalSt_Result>("GetNalSt");
+        }
     }
 }

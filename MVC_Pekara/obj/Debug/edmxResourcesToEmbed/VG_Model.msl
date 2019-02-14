@@ -41,5 +41,27 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetNalogStavke" FunctionName="VG_DatabaseModel.Store.GetNalogStavke">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VG_DatabaseModel.GetNalogStavke_Result">
+          <ScalarProperty Name="BrojNaloga" ColumnName="BrojNaloga" />
+          <ScalarProperty Name="DatumNaloga" ColumnName="DatumNaloga" />
+          <ScalarProperty Name="ArtikalID" ColumnName="ArtikalID" />
+          <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetNalSt" FunctionName="VG_DatabaseModel.Store.GetNalSt">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VG_DatabaseModel.GetNalSt_Result">
+          <ScalarProperty Name="NalogID" ColumnName="NalogID" />
+          <ScalarProperty Name="BrojNaloga" ColumnName="BrojNaloga" />
+          <ScalarProperty Name="DatumNaloga" ColumnName="DatumNaloga" />
+          <ScalarProperty Name="StavkeNPID" ColumnName="StavkeNPID" />
+          <ScalarProperty Name="ArtikalID" ColumnName="ArtikalID" />
+          <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

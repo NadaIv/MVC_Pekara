@@ -59,5 +59,40 @@
       <End Role="NalogProizvodnje" EntitySet="NalogProizvodnjes" />
       <End Role="StavkeNalogaProizvodnje" EntitySet="StavkeNalogaProizvodnjes" />
     </AssociationSet>
+    <FunctionImport Name="GetNalogStavke" ReturnType="Collection(VG_DatabaseModel.GetNalogStavke_Result)" />
+    <FunctionImport Name="GetNS" ReturnType="Collection(VG_DatabaseModel.GetNS_Result)" />
+    <FunctionImport Name="GetNSt" ReturnType="Collection(VG_DatabaseModel.GetNSt_Result)" />
+    <FunctionImport Name="GetNalSt" ReturnType="Collection(VG_DatabaseModel.GetNalSt_Result)" />
   </EntityContainer>
+  <ComplexType Name="GetNalogStavke_Result">
+    <Property Type="String" Name="BrojNaloga" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="DatumNaloga" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="ArtikalID" Nullable="false" />
+    <Property Type="Int32" Name="Kolicina" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetNS_Result">
+    <Property Type="Int32" Name="NalogID" Nullable="false" />
+    <Property Type="String" Name="BrojNaloga" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="DatumNaloga" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="StavkeNPID" Nullable="false" />
+    <Property Type="Int32" Name="ArtikalID" Nullable="false" />
+    <Property Type="Int32" Name="Kolicina" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetNSt_Result">
+    <Property Type="Int32" Name="NalogID" Nullable="false" />
+    <Property Type="String" Name="BrojNaloga" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="DatumNaloga" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="StavkeNPID" Nullable="false" />
+    <Property Type="Int32" Name="NalogID1" Nullable="false" />
+    <Property Type="Int32" Name="ArtikalID" Nullable="false" />
+    <Property Type="Int32" Name="Kolicina" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetNalSt_Result">
+    <Property Type="Int32" Name="NalogID" Nullable="false" />
+    <Property Type="String" Name="BrojNaloga" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="DatumNaloga" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="StavkeNPID" Nullable="false" />
+    <Property Type="Int32" Name="ArtikalID" Nullable="false" />
+    <Property Type="Int32" Name="Kolicina" Nullable="false" />
+  </ComplexType>
 </Schema>
