@@ -32,10 +32,7 @@ namespace MVC_Pekara
         public virtual DbSet<NalogProizvodnje> NalogProizvodnjes { get; set; }
         public virtual DbSet<StavkeNalogaProizvodnje> StavkeNalogaProizvodnjes { get; set; }
     
-        public virtual ObjectResult<GetNalogStavke_Result> GetNalogStavke()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetNalogStavke_Result>("GetNalogStavke");
-        }
+        
     
         
     

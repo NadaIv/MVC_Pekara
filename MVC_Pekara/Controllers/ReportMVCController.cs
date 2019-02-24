@@ -86,44 +86,9 @@ namespace MVC_Pekara.Controllers
 			return View();
 		}
 
-		public ActionResult NalogStavke()
-		{
-			DataSetNalogStavke ds = new DataSetNalogStavke();
-
-			ReportViewer viewer = new ReportViewer();
-			viewer.ProcessingMode = ProcessingMode.Local;
-
-
-			var connectionString = ConfigurationManager.ConnectionStrings["VG_DatabaseConnectionString"].ConnectionString;
-
-			SqlConnection conx = new SqlConnection(connectionString);
-
-
-			SqlCommand cmd = new SqlCommand("GetNalogStavke",conx);
-			cmd.CommandType = CommandType.StoredProcedure;
-			SqlDataAdapter adp = new SqlDataAdapter(cmd);
-			adp.Fill(ds,"GetNalogStavke");
-
-			//DataTable dt = new DataTable();
 		
-			
 
-			
+		
 
-			viewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reports\ReportNalogStavke.rdlc";
-			viewer.LocalReport.DataSources.Add(new ReportDataSource("DataSetNalogStavke", ds.Tables[0]));
-
-			viewer.SizeToReportContent = true;
-			viewer.ZoomMode = ZoomMode.PageWidth;
-
-			viewer.Width = Unit.Percentage(100);
-			viewer.Height = Unit.Percentage(100);
-
-			ViewBag.ReportViewer = viewer;
-
-			return View();
 		}
-
-
-	}
 }

@@ -1,0 +1,16 @@
+﻿@model MVC_Pekara.NalogProizvodnje
+@using ReportViewerForMvc;
+
+@{
+    ViewBag.Title = "Rpt_NalStBrN";
+}
+
+<h2>Rpt_NalStBrN</h2>
+@using (Html.BeginForm())
+{
+    <input type="text" name="brojNaloga" />
+    <input type="submit" />
+}
+
+@Html.ReportViewer(ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer)
+

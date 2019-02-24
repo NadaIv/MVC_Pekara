@@ -1,0 +1,66 @@
+﻿@model MVC_Pekara.Artikli
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Artikli</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.KategorijaID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KategorijaID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NazivArtikla)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NazivArtikla)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Masa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Masa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipBrasna)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipBrasna)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProizvodjackaCenaBezPDV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProizvodjackaCenaBezPDV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProizvodjackaCenaSaPDV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProizvodjackaCenaSaPDV)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ArtikalID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

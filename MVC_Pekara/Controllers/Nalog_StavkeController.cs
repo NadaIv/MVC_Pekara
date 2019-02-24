@@ -1,8 +1,14 @@
-﻿using System;
+﻿using Microsoft.Reporting.WebForms;
+using MVC_Pekara.Reports;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace MVC_Pekara.Controllers
 {
@@ -55,6 +61,47 @@ namespace MVC_Pekara.Controllers
 				}
 			}
 			return new JsonResult { Data = new { status = status } };
+
+
 		}
+		public ActionResult Rpt_NalStBrN(int brojNaloga)
+		{
+			DataSetNalStBrN ds = new DataSetNalStBrN();
+
+
+			var viewer = new ReportViewer();
+
+			viewer.ProcessingMode = ProcessingMode.Local;
+
+			var connectionString = ConfigurationManager.ConnectionStrings["VG_DatabaseConnectionString"].ConnectionString;
+
+			SqlConnection conx = new SqlConnection(connectionString);
+			
+			SqlCommand comm = new SqlCommand("GetNalStBrN", conx);
+			comm.CommandType = CommandType.StoredProcedure;
+
+			SqlDataAdapter adp = new SqlDataAdapter(comm);
+			
+			comm.Parameters.Add("@brojNaloga", SqlDbType.Int);
+			comm.Parameters["@brojNaloga"].Value = brojNaloga;
+			adp.SelectCommand = comm;
+
+			adp.Fill(ds, "GetNalStBrN");
+
+			viewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reports\ReportNalStBrN.rdlc";
+			viewer.LocalReport.DataSources.Add(new ReportDataSource("DataSetNalStBrN", ds.Tables[0]));
+
+			viewer.SizeToReportContent = true;
+			viewer.ZoomMode = ZoomMode.PageWidth;
+			viewer.Width = Unit.Percentage(100);
+			viewer.Height = Unit.Percentage(100);
+
+			ViewBag.ReportViewer = viewer;
+
+
+
+			return View();
+		}
+
 	}
 }

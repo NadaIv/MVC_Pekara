@@ -5,5 +5,10 @@
 }
 
 <h2>Rpt_Artikli</h2>
+@using (Html.BeginForm())
+{
+    <input type="text" name="artikalID" />
+    <input type="submit" />
+}
 
 @Html.ReportViewer(ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer)
