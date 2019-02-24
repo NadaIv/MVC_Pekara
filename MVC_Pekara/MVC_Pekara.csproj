@@ -310,6 +310,7 @@
     </Compile>
     <Compile Include="Controllers\ArtikliController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KategorijeController.cs" />
     <Compile Include="Controllers\Nalog_StavkeController.cs" />
     <Compile Include="Controllers\ReportMVCController.cs" />
     <Compile Include="ExtendedModel\NalogProizvodnje.cs" />
@@ -412,6 +413,11 @@
     <Content Include="Views\Artikli\Rpt_ArtikalID.cshtml" />
     <Content Include="Views\Nalog_Stavke\Rpt_NalStBrN.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Kategorije\Create.cshtml" />
+    <Content Include="Views\Kategorije\Delete.cshtml" />
+    <Content Include="Views\Kategorije\Details.cshtml" />
+    <Content Include="Views\Kategorije\Edit.cshtml" />
+    <Content Include="Views\Kategorije\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
