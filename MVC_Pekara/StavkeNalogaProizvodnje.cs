@@ -11,12 +11,18 @@ namespace MVC_Pekara
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class StavkeNalogaProizvodnje
+	using System.ComponentModel;
+
+	public partial class StavkeNalogaProizvodnje
     {
         public int StavkeNPID { get; set; }
-        public int NalogID { get; set; }
-        public int ArtikalID { get; set; }
+
+		[DisplayName("Nalog")]
+		public int NalogID { get; set; }
+
+		[DisplayName("Artikal")]
+		public int ArtikalID { get; set; }
+
         public int Kolicina { get; set; }
     
         public virtual NalogProizvodnje NalogProizvodnje { get; set; }

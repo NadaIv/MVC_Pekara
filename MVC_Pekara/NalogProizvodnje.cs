@@ -11,8 +11,9 @@ namespace MVC_Pekara
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class NalogProizvodnje
+	using System.ComponentModel;
+
+	public partial class NalogProizvodnje
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NalogProizvodnje()
@@ -21,8 +22,12 @@ namespace MVC_Pekara
         }
     
         public int NalogID { get; set; }
-        public string BrojNaloga { get; set; }
-        public System.DateTime DatumNaloga { get; set; }
+
+		[DisplayName("Broj naloga")]
+		public string BrojNaloga { get; set; }
+
+		[DisplayName("Datum naloga")]
+		public System.DateTime DatumNaloga { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StavkeNalogaProizvodnje> StavkeNalogaProizvodnjes { get; set; }

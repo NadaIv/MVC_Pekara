@@ -11,15 +11,27 @@ namespace MVC_Pekara
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Artikli
+	using System.ComponentModel;
+
+	public partial class Artikli
     {
         public int ArtikalID { get; set; }
-        public int KategorijaID { get; set; }
-        public string NazivArtikla { get; set; }
+
+		[DisplayName("ID kategorije")]
+		public int KategorijaID { get; set; }
+
+		[DisplayName("Naziv artikla")]
+		public string NazivArtikla { get; set; }
+
         public Nullable<int> Masa { get; set; }
-        public string TipBrasna { get; set; }
+
+		[DisplayName("Tip brasna")]
+		public string TipBrasna { get; set; }
+
+		[DisplayName("Proizv. cena bez PDV-a")]
         public Nullable<int> ProizvodjackaCenaBezPDV { get; set; }
-        public Nullable<int> ProizvodjackaCenaSaPDV { get; set; }
+
+		[DisplayName("Proizv. cena sa PDV-om")]
+		public Nullable<int> ProizvodjackaCenaSaPDV { get; set; }
     }
 }

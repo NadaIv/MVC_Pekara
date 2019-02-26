@@ -14,14 +14,29 @@ namespace MVC_Pekara.Controllers
     {
         private VG_DatabaseEntities db = new VG_DatabaseEntities();
 
-        // GET: Kategorije
-        public ActionResult Index()
-        {
-            return View(db.Kategorijes.ToList());
-        }
+		//// GET: Kategorije
+		//public ActionResult Index()
+		//{
+		//    return View(db.Kategorijes.ToList());
+		//}
 
-        // GET: Kategorije/Details/5
-        public ActionResult Details(int? id)
+		public ActionResult Index()
+		{
+			return View();
+		}
+
+		public ActionResult GetKategorijes()
+		{
+			using (VG_DatabaseEntities db = new VG_DatabaseEntities())
+			{
+				db.Configuration.LazyLoadingEnabled = false;
+				var kategorijes = db.Kategorijes.OrderBy(a => a.NazivKategorije).ToList();
+				return Json(new { data = kategorijes }, JsonRequestBehavior.AllowGet);
+			}
+		}
+
+		// GET: Kategorije/Details/5
+		public ActionResult Details(int? id)
         {
             if (id == null)
             {

@@ -1,33 +1,131 @@
-﻿@model IEnumerable<MVC_Pekara.Kategorije>
+﻿
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Godine";
+
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NazivKategorije)
-        </th>
-        <th></th>
-    </tr>
+<!DOCTYPE html>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NazivKategorije)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.KategorijaID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.KategorijaID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.KategorijaID })
-        </td>
-    </tr>
-}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Godine</title>
 
-</table>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
+    
+    <style>
+        span.field-validation-error {
+            color: red;
+        }
+        .btn, .ui-widget.ui-widget-content, .ui-dialog .ui-dialog-titlebar {
+            background: #EEE8AA;
+            border: 1px solid #333;
+            box-shadow: 8px 8px 5px #BDB76B;
+            color: #000;
+        }  
+    </style>
+</head>
+<body>
+
+    <div style="width:90%; margin:0 auto" class="tablecontainer">
+        <a class="popup btn "
+           href="/kategorije/create/" style="margin-bottom:20px; margin-top:20px">Unesite kategoriju</a>
+        <table id="myKategorije" class="table" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Naziv kategorije</th>
+                
+                    <th>Edit</th>
+                    <th>Details</th>
+                    <th>Delete</th>
+
+                </tr>
+            </thead>
+
+        </table>
+    </div>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var oTable = $('#myKategorije').DataTable({
+                "ajax": {
+                    "url": '/Kategorije/GetKategorijes',
+
+                    "type": "get",
+                    "datatype": "json"
+                },
+
+                "columns": [
+                    { "data": "NazivKategorije", "autowidth": true },
+                   
+                    {
+                        "data": "KategorijaID", "width": "50px", "render": function (data) {
+                            return '<a class="popup" href="/Kategorije/edit/' + data + '">Edit</a>';
+                        }
+                    },
+                    {
+                        "data": "KategorijaID", "width": "50px", "render": function (data) {
+                            return '<a class="popup" href="/Kategorije/details/' + data + '">Details</a>';
+                        }
+                    },
+                    {
+                        "data": "KategorijaID", "width": "50px", "render": function (data) {
+                            return '<a class="popup" href="/Kategorije/delete/' + data + '">Delete</a>';
+                        }
+                    }
+                ]
+
+            })
+            $('.tablecontainer').on('click', 'a.popup', function (e) {
+                e.preventDefault();
+                OpenPopup($(this).attr('href'));
+            })
+            function OpenPopup(pageUrl) {
+                var $pageContent = $('<div/>');
+                $pageContent.load(pageUrl, function () {
+                    $('#popupForm', $pageContent).removeData('validator');
+                    $('#popupForm', $pageContent).removeData('unobtrusiveValidation');
+                    //$.validator.unobtrusive.parse('form');
+                });
+                $dialog = $('<div class="popupWindow" style="overflow:auto"></div>')
+                    .html($pageContent)
+                    .dialog({
+                        draggable: false,
+                        autoOpen: false,
+                        resizable: false,
+                        model: true,
+                        title: 'Popup Dialog',
+                        hight: 550,
+                        width: 600,
+                        close: function () {
+                            $dialog.dialog('destroy').remove();
+                        }
+                    })
+                $('.popupWindow').on('submit', '#popupForm', function (e) {
+                    var url = $('#popupForm')[0].action;
+                    $.ajax({
+                        type: 'POST',
+                        url: url,
+                        data: $('#popupForm').serialize(),
+                        success: function (data) {
+                            if (data.status) {
+                                $dialog.dialog('close');
+                                oTable.ajax.reload();
+                            }
+                        }
+                    })
+                    e.preventDefault();
+                })
+                $dialog.dialog('open');
+            }
+        })
+    </script>
+</body>
+</html>

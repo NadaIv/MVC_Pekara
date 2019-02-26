@@ -11,10 +11,13 @@ namespace MVC_Pekara
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Kategorije
+	using System.ComponentModel;
+
+	public partial class Kategorije
     {
         public int KategorijaID { get; set; }
-        public string NazivKategorije { get; set; }
+
+		[DisplayName("Naziv kategorije")]
+		public string NazivKategorije { get; set; }
     }
 }
