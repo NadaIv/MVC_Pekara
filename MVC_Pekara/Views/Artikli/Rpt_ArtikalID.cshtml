@@ -9,8 +9,17 @@
 @using (Html.BeginForm())
 {
     <input type="text" name="artikalID" />
-    <input type="submit" />
+    <input type="submit" value="Posalji" />
 }
 
 @Html.ReportViewer(ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer)
 
+<style>
+    iframe {
+        width: 100%;
+        height: 500px;
+        border: none;
+        overflow-y: auto;
+        overflow-x: auto;
+    }
+</style>

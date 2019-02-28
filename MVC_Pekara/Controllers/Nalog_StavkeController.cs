@@ -96,6 +96,7 @@ namespace MVC_Pekara.Controllers
 			viewer.Width = Unit.Percentage(100);
 			viewer.Height = Unit.Percentage(100);
 
+
 			ViewBag.ReportViewer = viewer;
 
 

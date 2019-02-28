@@ -17,13 +17,14 @@ namespace MVC_Pekara
     {
         public int ArtikalID { get; set; }
 
-		[DisplayName("ID kategorije")]
+		[DisplayName("Kategorija")]
 		public int KategorijaID { get; set; }
 
 		[DisplayName("Naziv artikla")]
 		public string NazivArtikla { get; set; }
 
-        public Nullable<int> Masa { get; set; }
+		[DisplayName("Masa (g)")]
+		public Nullable<int> Masa { get; set; }
 
 		[DisplayName("Tip brasna")]
 		public string TipBrasna { get; set; }

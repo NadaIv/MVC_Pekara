@@ -23,7 +23,8 @@ namespace MVC_Pekara
 		[DisplayName("Artikal")]
 		public int ArtikalID { get; set; }
 
-        public int Kolicina { get; set; }
+		[DisplayName("Kolicina (kom)")]
+		public int Kolicina { get; set; }
     
         public virtual NalogProizvodnje NalogProizvodnje { get; set; }
     }

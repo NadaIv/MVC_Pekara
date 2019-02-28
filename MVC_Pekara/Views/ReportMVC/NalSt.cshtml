@@ -1,8 +1,16 @@
 ﻿@using ReportViewerForMvc;
 @{
-    ViewBag.Title = "NalSt";
+    ViewBag.Title = "Nalog";
 }
 
-<h2>NalSt</h2>
-<button type="button" onclick="location.href='@Url.Action("Report","ReportMVC")'">Report</button>
+<h2>Nalog - stavke</h2>
 @Html.ReportViewer(ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer)
+<style>
+    iframe {
+        width: 100%;
+        height: 500px;
+        border: none;
+        overflow-y: auto;
+        overflow-x: auto;
+    }
+</style>

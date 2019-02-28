@@ -89,12 +89,12 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>15.58333cm</Width>
+                  <Width>20.16443cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>3.21438cm</Height>
+                  <Height>10.50714cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -107,7 +107,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>Broj</Value>
+                                      <Value>Broj naloga</Value>
                                       <Style />
                                     </TextRun>
                                   </TextRuns>
@@ -196,7 +196,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>Datum</Value>
+                                      <Value>Datum naloga</Value>
                                       <Style />
                                     </TextRun>
                                   </TextRuns>
@@ -462,7 +462,6 @@
                             </Border>
                           </Style>
                         </Rectangle>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -488,8 +487,8 @@
             <DataSetName>DataSetNalStBrN</DataSetName>
             <Top>1.42557cm</Top>
             <Left>0.34078cm</Left>
-            <Height>3.21438cm</Height>
-            <Width>15.58333cm</Width>
+            <Height>10.50714cm</Height>
+            <Width>20.16443cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -498,10 +497,10 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>2in</Height>
+        <Height>4.69792in</Height>
         <Style />
       </Body>
-      <Width>6.5in</Width>
+      <Width>8.07292in</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>

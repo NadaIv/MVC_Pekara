@@ -19,14 +19,45 @@ namespace MVC_Pekara.Controllers
     {
         private VG_DatabaseEntities db = new VG_DatabaseEntities();
 
-        // GET: Artikli
-        public ActionResult Index()
-        {
-            return View(db.Artiklis.ToList());
-        }
+		// GET: Artikli
+		/*   public ActionResult Index()
+		   {
+			   return View(db.Artiklis.ToList());
+		   }*/
 
-        // GET: Artikli/Details/5
-        public ActionResult Details(int? id)
+		public ActionResult Index()
+		{
+			return View();
+		}
+
+		public ActionResult GetArtiklis()
+		{
+			using (VG_DatabaseEntities db = new VG_DatabaseEntities())
+			{
+
+				var artiklis = (from a in db.Artiklis
+								 join k in db.Kategorijes
+								 on a.KategorijaID equals k.KategorijaID
+								 select new
+								 {
+									 a.ArtikalID,
+									 a.NazivArtikla,
+									 a.Masa,
+									 a.TipBrasna,
+									 a.ProizvodjackaCenaBezPDV,
+									 a.ProizvodjackaCenaSaPDV,
+									 a.KategorijaID,
+									 k.NazivKategorije
+
+								 }).ToList();
+
+				return Json(new { data = artiklis }, JsonRequestBehavior.AllowGet);
+			}
+		}
+
+
+		// GET: Artikli/Details/5
+		public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -43,7 +74,9 @@ namespace MVC_Pekara.Controllers
         // GET: Artikli/Create
         public ActionResult Create()
         {
-            return View();
+			ViewBag.KategorijaID = new SelectList(db.Kategorijes, "KategorijaID", "NazivKategorije");
+
+			return View();
         }
 
         // POST: Artikli/Create
@@ -75,7 +108,8 @@ namespace MVC_Pekara.Controllers
             {
                 return HttpNotFound();
             }
-            return View(artikli);
+			ViewBag.KategorijaID = new SelectList(db.Kategorijes, "KategorijaID", "NazivKategorije");
+			return View(artikli);
         }
 
         // POST: Artikli/Edit/5
