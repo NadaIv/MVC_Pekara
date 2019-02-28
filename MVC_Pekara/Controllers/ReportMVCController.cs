@@ -24,36 +24,7 @@ namespace MVC_Pekara.Controllers
 
 		
 
-		public ActionResult Rpt_Artikli()
-		{
-			DataSetArtikli ds = new DataSetArtikli();
-			//var dataSetArtikli = new Reports.DataSetArtikli();
-			//	dataSetArtikli.Artikli.AddArtikliRow( 1, "Bio hleb",500,"500",21,25);
-
-			var viewer = new ReportViewer();
-
-			viewer.ProcessingMode = ProcessingMode.Local;
-
-			var connectionString = ConfigurationManager.ConnectionStrings["VG_DatabaseConnectionString"].ConnectionString;
-			SqlConnection conx = new SqlConnection(connectionString);
-			SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM Artikli", conx);
-
-			adp.Fill(ds, ds.Artikli.TableName);
-
-			viewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reports\ReportArtikli.rdlc";
-			viewer.LocalReport.DataSources.Add(new ReportDataSource("DataSetArtikli", ds.Tables[0]));
-
-			viewer.SizeToReportContent = true;
-			viewer.ZoomMode = ZoomMode.PageWidth;
-			viewer.Width = Unit.Percentage(100);
-			viewer.Height = Unit.Percentage(100);
-
-			ViewBag.ReportViewer = viewer;
-			
-			
-
-			return View();
-		}
+		
 
 		public ActionResult NalSt()
 		{
@@ -85,10 +56,48 @@ namespace MVC_Pekara.Controllers
 
 			return View();
 		}
+		public ActionResult KatArt(int artikalID)
+		{
+			DataSetKatArt ds = new DataSetKatArt();
 
-		
 
-		
+			var viewer = new ReportViewer();
 
+			viewer.ProcessingMode = ProcessingMode.Local;
+
+			var connectionString = ConfigurationManager.ConnectionStrings["VG_DatabaseConnectionString"].ConnectionString;
+
+			SqlConnection conx = new SqlConnection(connectionString);
+
+			SqlCommand comm = new SqlCommand("GetKatArt", conx);
+			comm.CommandType = CommandType.StoredProcedure;
+
+			SqlDataAdapter adp = new SqlDataAdapter(comm);
+
+			comm.Parameters.Add("@artikalID", SqlDbType.Int);
+			comm.Parameters["@artikalID"].Value = artikalID;
+			adp.SelectCommand = comm;
+
+			adp.Fill(ds, "GetKatArt");
+
+			viewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reports\ReportKatArt.rdlc";
+			viewer.LocalReport.DataSources.Add(new ReportDataSource("DataSetKatArt", ds.Tables[0]));
+
+			viewer.SizeToReportContent = true;
+			viewer.ZoomMode = ZoomMode.PageWidth;
+			viewer.Width = Unit.Percentage(100);
+			viewer.Height = Unit.Percentage(100);
+
+
+			ViewBag.ReportViewer = viewer;
+
+
+
+			return View();
 		}
+
+
+
+
+	}
 }

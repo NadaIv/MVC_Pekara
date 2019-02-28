@@ -195,36 +195,25 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
-    <Content Include="Reports\DataSetArtikli.xsc">
-      <DependentUpon>DataSetArtikli.xsd</DependentUpon>
-    </Content>
-    <Content Include="Reports\DataSetArtikalID.xsc">
-      <DependentUpon>DataSetArtikalID.xsd</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-reboot.min.css.map" />
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <None Include="Reports\DataSetArtikalID.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSetArtikalID.Designer.cs</LastGenOutput>
-    </None>
-    <Content Include="Reports\DataSetArtikalID.xss">
-      <DependentUpon>DataSetArtikalID.xsd</DependentUpon>
-    </Content>
-    <None Include="Reports\DataSetArtikli.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSetArtikli.Designer.cs</LastGenOutput>
-    </None>
-    <Content Include="Reports\DataSetArtikli.xss">
-      <DependentUpon>DataSetArtikli.xsd</DependentUpon>
-    </Content>
     <Content Include="Reports\DataSetNalSt.xsc">
       <DependentUpon>DataSetNalSt.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\DataSetKatArt.xsc">
+      <DependentUpon>DataSetKatArt.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\DataSetKatArt.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetKatArt.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\DataSetKatArt.xss">
+      <DependentUpon>DataSetKatArt.xsd</DependentUpon>
     </Content>
     <None Include="Reports\DataSetNalSt.xsd">
       <SubType>Designer</SubType>
@@ -327,21 +316,13 @@
       <DependentUpon>VG_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reports\DataSetArtikalID.cs">
-      <DependentUpon>DataSetArtikalID.xsd</DependentUpon>
+    <Compile Include="Reports\DataSetKatArt.cs">
+      <DependentUpon>DataSetKatArt.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Reports\DataSetArtikalID.Designer.cs">
+    <Compile Include="Reports\DataSetKatArt.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataSetArtikalID.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Reports\DataSetArtikli.cs">
-      <DependentUpon>DataSetArtikli.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Reports\DataSetArtikli.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSetArtikli.xsd</DependentUpon>
+      <DependentUpon>DataSetKatArt.xsd</DependentUpon>
     </Compile>
     <Compile Include="Reports\DataSetNalSt.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -403,14 +384,12 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\ReportMVC\Index.cshtml" />
-    <Content Include="Views\ReportMVC\Rpt_Artikli.cshtml" />
     <Content Include="Views\ReportMVC\NalSt.cshtml" />
     <Content Include="Views\Artikli\Create.cshtml" />
     <Content Include="Views\Artikli\Delete.cshtml" />
     <Content Include="Views\Artikli\Details.cshtml" />
     <Content Include="Views\Artikli\Edit.cshtml" />
     <Content Include="Views\Artikli\Index.cshtml" />
-    <Content Include="Views\Artikli\Rpt_ArtikalID.cshtml" />
     <Content Include="Views\Nalog_Stavke\Rpt_NalStBrN.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Kategorije\Create.cshtml" />
@@ -418,6 +397,8 @@
     <Content Include="Views\Kategorije\Details.cshtml" />
     <Content Include="Views\Kategorije\Edit.cshtml" />
     <Content Include="Views\Kategorije\Index.cshtml" />
+    <Content Include="Views\ReportMVC\KatArt.cshtml" />
+    <Content Include="Views\Artikli\KatArt.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -433,8 +414,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Reports\ReportArtikalID.rdlc" />
-    <EmbeddedResource Include="Reports\ReportArtikli.rdlc" />
+    <EmbeddedResource Include="Reports\ReportKatArt.rdlc" />
     <EmbeddedResource Include="Reports\ReportNalSt.rdlc" />
     <EmbeddedResource Include="Reports\ReportNalStBrN.rdlc" />
   </ItemGroup>

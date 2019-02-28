@@ -153,9 +153,11 @@ namespace MVC_Pekara.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-		public ActionResult Rpt_ArtikalID(int artikalID)
+		
+
+		public ActionResult KatArt(int artikalID)
 		{
-			DataSetArtikalID ds = new DataSetArtikalID();
+			DataSetKatArt ds = new DataSetKatArt();
 
 
 			var viewer = new ReportViewer();
@@ -165,22 +167,26 @@ namespace MVC_Pekara.Controllers
 			var connectionString = ConfigurationManager.ConnectionStrings["VG_DatabaseConnectionString"].ConnectionString;
 
 			SqlConnection conx = new SqlConnection(connectionString);
-			SqlDataAdapter adp = new SqlDataAdapter();
-			SqlCommand comm = new SqlCommand("SELECT * FROM Artikli WHERE ArtikalID=@artikalID", conx);
-			//comm.Parameters.AddWithValue("@artikalID", artikalID);
+
+			SqlCommand comm = new SqlCommand("GetKatArt", conx);
+			comm.CommandType = CommandType.StoredProcedure;
+
+			SqlDataAdapter adp = new SqlDataAdapter(comm);
+
 			comm.Parameters.Add("@artikalID", SqlDbType.Int);
 			comm.Parameters["@artikalID"].Value = artikalID;
 			adp.SelectCommand = comm;
 
-			adp.Fill(ds, "Artikli");
+			adp.Fill(ds, "GetKatArt");
 
-			viewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reports\ReportArtikalID.rdlc";
-			viewer.LocalReport.DataSources.Add(new ReportDataSource("DataSetArtikalID", ds.Tables[0]));
+			viewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reports\ReportKatArt.rdlc";
+			viewer.LocalReport.DataSources.Add(new ReportDataSource("DataSetKatArt", ds.Tables[0]));
 
 			viewer.SizeToReportContent = true;
 			viewer.ZoomMode = ZoomMode.PageWidth;
 			viewer.Width = Unit.Percentage(100);
 			viewer.Height = Unit.Percentage(100);
+
 
 			ViewBag.ReportViewer = viewer;
 
