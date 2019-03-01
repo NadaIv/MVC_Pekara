@@ -1,10 +1,59 @@
 ﻿
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Report";
 }
 
-<h2>Index</h2>
 
+<div class="jumbotron">
+
+
+    <p class="text-center">
+
+        <h1>PEKARA</h1>
+
+    </p>
+
+
+</div>
+
+<div class="row">
+   
+
+        
+    <div class="col-xs-4">
+        <h3>ARTIKLI</h3>
+        <p>
+            <a href="/ReportMVC/KatArt?artikalID=0" class="btn btn-success btn-lg">
+                <span class="glyphicon glyphicon-print"></span> Stampa artikala
+            </a>
+        </p>
+    </div>
+    <div class="col-xs-4">
+        <h3>NALOG</h3>
+        <p>
+            <a href="/Nalog_Stavke/Rpt_NalStBrN?brojNaloga=0" class="btn btn-success btn-lg">
+
+                <span class="glyphicon glyphicon-print"></span> Stampa naloga proizvodnje
+            </a>
+        </p>
+    </div>
+    
+</div>
+<style>
+
+    .jumbotron, .btn-lg {
+        background: #EEE8AA;
+        color: #000;
+        border: 1px solid #333;
+        box-shadow: 8px 8px 5px #EEE8AA;
+        position: sticky;
+        top: 80px;
+    }
+
+        .btn-lg:hover {
+            color: #EEE8AA;
+        }
+</style>
 
 

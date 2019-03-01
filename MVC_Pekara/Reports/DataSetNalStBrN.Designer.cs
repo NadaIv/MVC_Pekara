@@ -291,6 +291,8 @@ namespace MVC_Pekara.Reports {
             
             private global::System.Data.DataColumn columnKolicina;
             
+            private global::System.Data.DataColumn columnNazivArtikla;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public GetNalStBrNDataTable() {
@@ -374,6 +376,14 @@ namespace MVC_Pekara.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn NazivArtiklaColumn {
+                get {
+                    return this.columnNazivArtikla;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -409,7 +419,7 @@ namespace MVC_Pekara.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public GetNalStBrNRow AddGetNalStBrNRow(string BrojNaloga, System.DateTime DatumNaloga, int ArtikalID, int Kolicina) {
+            public GetNalStBrNRow AddGetNalStBrNRow(string BrojNaloga, System.DateTime DatumNaloga, int ArtikalID, int Kolicina, string NazivArtikla) {
                 GetNalStBrNRow rowGetNalStBrNRow = ((GetNalStBrNRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -417,7 +427,8 @@ namespace MVC_Pekara.Reports {
                         DatumNaloga,
                         null,
                         ArtikalID,
-                        Kolicina};
+                        Kolicina,
+                        NazivArtikla};
                 rowGetNalStBrNRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowGetNalStBrNRow);
                 return rowGetNalStBrNRow;
@@ -446,6 +457,7 @@ namespace MVC_Pekara.Reports {
                 this.columnStavkeNPID = base.Columns["StavkeNPID"];
                 this.columnArtikalID = base.Columns["ArtikalID"];
                 this.columnKolicina = base.Columns["Kolicina"];
+                this.columnNazivArtikla = base.Columns["NazivArtikla"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -463,17 +475,24 @@ namespace MVC_Pekara.Reports {
                 base.Columns.Add(this.columnArtikalID);
                 this.columnKolicina = new global::System.Data.DataColumn("Kolicina", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnKolicina);
+                this.columnNazivArtikla = new global::System.Data.DataColumn("NazivArtikla", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNazivArtikla);
                 this.columnNalogID.AutoIncrement = true;
+                this.columnNalogID.AutoIncrementSeed = -1;
+                this.columnNalogID.AutoIncrementStep = -1;
                 this.columnNalogID.AllowDBNull = false;
                 this.columnNalogID.ReadOnly = true;
                 this.columnBrojNaloga.AllowDBNull = false;
                 this.columnBrojNaloga.MaxLength = 50;
                 this.columnDatumNaloga.AllowDBNull = false;
                 this.columnStavkeNPID.AutoIncrement = true;
+                this.columnStavkeNPID.AutoIncrementSeed = -1;
+                this.columnStavkeNPID.AutoIncrementStep = -1;
                 this.columnStavkeNPID.AllowDBNull = false;
                 this.columnStavkeNPID.ReadOnly = true;
                 this.columnArtikalID.AllowDBNull = false;
                 this.columnKolicina.AllowDBNull = false;
+                this.columnNazivArtikla.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -679,6 +698,34 @@ namespace MVC_Pekara.Reports {
                     this[this.tableGetNalStBrN.KolicinaColumn] = value;
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string NazivArtikla {
+                get {
+                    try {
+                        return ((string)(this[this.tableGetNalStBrN.NazivArtiklaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NazivArtikla\' in table \'GetNalStBrN\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableGetNalStBrN.NazivArtiklaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsNazivArtiklaNull() {
+                return this.IsNull(this.tableGetNalStBrN.NazivArtiklaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetNazivArtiklaNull() {
+                this[this.tableGetNalStBrN.NazivArtiklaColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -846,6 +893,7 @@ namespace MVC_Pekara.Reports.DataSetNalStBrNTableAdapters {
             tableMapping.ColumnMappings.Add("StavkeNPID", "StavkeNPID");
             tableMapping.ColumnMappings.Add("ArtikalID", "ArtikalID");
             tableMapping.ColumnMappings.Add("Kolicina", "Kolicina");
+            tableMapping.ColumnMappings.Add("NazivArtikla", "NazivArtikla");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

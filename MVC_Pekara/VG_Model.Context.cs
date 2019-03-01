@@ -38,9 +38,6 @@ namespace MVC_Pekara
     
         
     
-        public virtual ObjectResult<GetNalSt_Result> GetNalSt()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetNalSt_Result>("GetNalSt");
-        }
+       
     }
 }

@@ -9,7 +9,7 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="GetNalStBrNTableAdapter" GeneratorDataComponentClassName="GetNalStBrNTableAdapter" Name="GetNalStBrN" UserDataComponentName="GetNalStBrNTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="VG_DatabaseConnectionString (Web.config)" DbObjectName="dbo.GetNalStBrN" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="VG_DatabaseConnectionString (Web.config)" DbObjectName="[C:\USERS\ZOKA\DESKTOP\MVC_PEKARA\MVC_PEKARA\APP_DATA\VG_DATABASE.MDF].dbo.GetNalStBrN" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.GetNalStBrN</CommandText>
@@ -28,6 +28,7 @@
               <Mapping SourceColumn="StavkeNPID" DataSetColumn="StavkeNPID" />
               <Mapping SourceColumn="ArtikalID" DataSetColumn="ArtikalID" />
               <Mapping SourceColumn="Kolicina" DataSetColumn="Kolicina" />
+              <Mapping SourceColumn="NazivArtikla" DataSetColumn="NazivArtikla" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -42,7 +43,7 @@
         <xs:element name="GetNalStBrN" msprop:Generator_TableClassName="GetNalStBrNDataTable" msprop:Generator_TableVarName="tableGetNalStBrN" msprop:Generator_TablePropName="GetNalStBrN" msprop:Generator_RowDeletingName="GetNalStBrNRowDeleting" msprop:Generator_RowChangingName="GetNalStBrNRowChanging" msprop:Generator_RowEvHandlerName="GetNalStBrNRowChangeEventHandler" msprop:Generator_RowDeletedName="GetNalStBrNRowDeleted" msprop:Generator_UserTableName="GetNalStBrN" msprop:Generator_RowChangedName="GetNalStBrNRowChanged" msprop:Generator_RowEvArgName="GetNalStBrNRowChangeEvent" msprop:Generator_RowClassName="GetNalStBrNRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="NalogID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columnNalogID" msprop:Generator_ColumnPropNameInRow="NalogID" msprop:Generator_ColumnPropNameInTable="NalogIDColumn" msprop:Generator_UserColumnName="NalogID" type="xs:int" />
+              <xs:element name="NalogID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnNalogID" msprop:Generator_ColumnPropNameInRow="NalogID" msprop:Generator_ColumnPropNameInTable="NalogIDColumn" msprop:Generator_UserColumnName="NalogID" type="xs:int" />
               <xs:element name="BrojNaloga" msprop:Generator_ColumnVarNameInTable="columnBrojNaloga" msprop:Generator_ColumnPropNameInRow="BrojNaloga" msprop:Generator_ColumnPropNameInTable="BrojNalogaColumn" msprop:Generator_UserColumnName="BrojNaloga">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -51,9 +52,16 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="DatumNaloga" msprop:Generator_ColumnVarNameInTable="columnDatumNaloga" msprop:Generator_ColumnPropNameInRow="DatumNaloga" msprop:Generator_ColumnPropNameInTable="DatumNalogaColumn" msprop:Generator_UserColumnName="DatumNaloga" type="xs:dateTime" />
-              <xs:element name="StavkeNPID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columnStavkeNPID" msprop:Generator_ColumnPropNameInRow="StavkeNPID" msprop:Generator_ColumnPropNameInTable="StavkeNPIDColumn" msprop:Generator_UserColumnName="StavkeNPID" type="xs:int" />
+              <xs:element name="StavkeNPID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnStavkeNPID" msprop:Generator_ColumnPropNameInRow="StavkeNPID" msprop:Generator_ColumnPropNameInTable="StavkeNPIDColumn" msprop:Generator_UserColumnName="StavkeNPID" type="xs:int" />
               <xs:element name="ArtikalID" msprop:Generator_ColumnVarNameInTable="columnArtikalID" msprop:Generator_ColumnPropNameInRow="ArtikalID" msprop:Generator_ColumnPropNameInTable="ArtikalIDColumn" msprop:Generator_UserColumnName="ArtikalID" type="xs:int" />
               <xs:element name="Kolicina" msprop:Generator_ColumnVarNameInTable="columnKolicina" msprop:Generator_ColumnPropNameInRow="Kolicina" msprop:Generator_ColumnPropNameInTable="KolicinaColumn" msprop:Generator_UserColumnName="Kolicina" type="xs:int" />
+              <xs:element name="NazivArtikla" msprop:Generator_ColumnVarNameInTable="columnNazivArtikla" msprop:Generator_ColumnPropNameInRow="NazivArtikla" msprop:Generator_ColumnPropNameInTable="NazivArtiklaColumn" msprop:Generator_UserColumnName="NazivArtikla" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>

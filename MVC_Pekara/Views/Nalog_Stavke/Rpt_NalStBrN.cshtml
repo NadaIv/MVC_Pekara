@@ -4,8 +4,10 @@
 @{
     ViewBag.Title = "Nalog";
 }
+<h2>Report</h2>
 
-<h2>Nalog proizvodnje</h2>
+<h4>Unesi broj naloga:</h4>
+
 @using (Html.BeginForm())
 {
     <input type="text" name="brojNaloga" />
@@ -16,12 +18,10 @@
 
 <style>
     iframe {
-       
         width: 100%;
         height: 500px;
         border: none;
         overflow-y: auto;
         overflow-x: auto;
-        
     }
 </style>
