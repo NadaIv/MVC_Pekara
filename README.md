@@ -1,4 +1,4 @@
 # MVC_Pekara
 
-Access database :
+Microsoft Access database :
 https://github.com/NadaIv/PekaraVG
